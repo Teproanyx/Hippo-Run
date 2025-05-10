@@ -1,0 +1,57 @@
+[gd_scene load_steps=11 format=3 uid="uid://bju4jxwr7a0pg"]
+
+[ext_resource type="Script" uid="uid://csxu2o43rop4y" path="res://scenes/main.gd" id="1_d36gk"]
+[ext_resource type="PackedScene" uid="uid://bpkphu8qj137m" path="res://scenes/bg.tscn" id="1_qy3kl"]
+[ext_resource type="PackedScene" uid="uid://b5pwnh1tmyrnl" path="res://scenes/ground.tscn" id="2_qu4oq"]
+[ext_resource type="PackedScene" uid="uid://bhtein0chknfn" path="res://scenes/dino.tscn" id="3_l41lx"]
+[ext_resource type="PackedScene" uid="uid://lyf4a3sklk1o" path="res://scenes/hud.tscn" id="5_cgpie"]
+[ext_resource type="PackedScene" uid="uid://lotwuige1aee" path="res://scenes/game_over.tscn" id="6_6n2u1"]
+[ext_resource type="Texture2D" uid="uid://br570wyjl31u0" path="res://assets/img/obstacles/background.png" id="7_o6xl0"]
+[ext_resource type="AudioStream" uid="uid://dpvtjr3nt26ex" path="res://assets/sound/hit2.wav" id="8_tipki"]
+[ext_resource type="AudioStream" uid="uid://juvo7w75ufii" path="res://assets/sound/heart_pick_up.wav" id="9_85g3d"]
+[ext_resource type="AudioStream" uid="uid://84ni5a4obc8q" path="res://assets/sound/power_up_grab.wav" id="10_choun"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_d36gk")
+
+[node name="Bg" parent="." instance=ExtResource("1_qy3kl")]
+visible = false
+
+[node name="Ground" parent="." instance=ExtResource("2_qu4oq")]
+
+[node name="Dino" parent="." instance=ExtResource("3_l41lx")]
+position = Vector2(151, 501)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(576, 324)
+
+[node name="HUD" parent="." instance=ExtResource("5_cgpie")]
+
+[node name="HeartLabel" type="Label" parent="HUD"]
+offset_top = 50.0
+offset_right = 98.0
+offset_bottom = 96.0
+theme_override_font_sizes/font_size = 50
+text = "♥️ x 3"
+
+[node name="GameOver" parent="." instance=ExtResource("6_6n2u1")]
+process_mode = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground"]
+position = Vector2(578.25, 324)
+scale = Vector2(3.99132, 3.08654)
+texture = ExtResource("7_o6xl0")
+
+[node name="HitSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_tipki")
+volume_db = -25.0
+
+[node name="HeartPickUp" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_85g3d")
+volume_db = -25.0
+
+[node name="PowerUpGrab" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_choun")
+volume_db = -10.0

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://t47hxm614ya2"]
+
+[ext_resource type="Script" uid="uid://dyipmaww374jq" path="res://scenes/heart_item.gd" id="1_txm48"]
+[ext_resource type="Texture2D" uid="uid://bthpty7qd5npy" path="res://assets/img/obstacles/item-heart.png" id="2_ycbwg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ycbwg"]
+radius = 33.0
+
+[node name="Item" type="Node2D"]
+
+[node name="heart_item" type="Area2D" parent="."]
+script = ExtResource("1_txm48")
+
+[node name="Sprite2D" type="Sprite2D" parent="heart_item"]
+scale = Vector2(2.2, 2.2)
+texture = ExtResource("2_ycbwg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="heart_item"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_ycbwg")
